@@ -12,9 +12,15 @@
 		7C903FBD1F7A512300A91793 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C903FBC1F7A512300A91793 /* Assets.xcassets */; };
 		7C903FC01F7A512300A91793 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C903FBE1F7A512300A91793 /* Main.storyboard */; };
 		7C903FC31F7A512300A91793 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C903FC21F7A512300A91793 /* main.m */; };
+		7C903FCC1F7A515500A91793 /* VoiceRecordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C903FCB1F7A515500A91793 /* VoiceRecordButton.m */; };
+		7C903FE31F7A895100A91793 /* WaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C903FE21F7A895100A91793 /* WaveView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C7BD4DE1F7DEFB30033F5CF /* audio_pause_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = audio_pause_h.png; sourceTree = "<group>"; };
+		7C7BD4DF1F7DEFB30033F5CF /* audio_pause_h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "audio_pause_h@2x.png"; sourceTree = "<group>"; };
+		7C7BD4E01F7DEFB30033F5CF /* audio_play_h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "audio_play_h@2x.png"; sourceTree = "<group>"; };
+		7C7BD4E11F7DEFB40033F5CF /* audio_play_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = audio_play_h.png; sourceTree = "<group>"; };
 		7C903FB31F7A512300A91793 /* VoiceButtonAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoiceButtonAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C903FB61F7A512300A91793 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7C903FB71F7A512300A91793 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -25,6 +31,12 @@
 		7C903FC11F7A512300A91793 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C903FC21F7A512300A91793 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7C903FC41F7A512300A91793 /* VoiceButtonAnimation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VoiceButtonAnimation.entitlements; sourceTree = "<group>"; };
+		7C903FCA1F7A515500A91793 /* VoiceRecordButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoiceRecordButton.h; sourceTree = "<group>"; };
+		7C903FCB1F7A515500A91793 /* VoiceRecordButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VoiceRecordButton.m; sourceTree = "<group>"; };
+		7C903FDF1F7A5F3100A91793 /* SideAudio@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SideAudio@2x.png"; sourceTree = "<group>"; };
+		7C903FE01F7A5F3100A91793 /* SideAudio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SideAudio.png; sourceTree = "<group>"; };
+		7C903FE11F7A895100A91793 /* WaveView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaveView.h; sourceTree = "<group>"; };
+		7C903FE21F7A895100A91793 /* WaveView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaveView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +73,18 @@
 				7C903FB71F7A512300A91793 /* AppDelegate.m */,
 				7C903FB91F7A512300A91793 /* ViewController.h */,
 				7C903FBA1F7A512300A91793 /* ViewController.m */,
+				7C903FCA1F7A515500A91793 /* VoiceRecordButton.h */,
+				7C903FCB1F7A515500A91793 /* VoiceRecordButton.m */,
+				7C903FE11F7A895100A91793 /* WaveView.h */,
+				7C903FE21F7A895100A91793 /* WaveView.m */,
 				7C903FBC1F7A512300A91793 /* Assets.xcassets */,
 				7C903FBE1F7A512300A91793 /* Main.storyboard */,
+				7C903FE01F7A5F3100A91793 /* SideAudio.png */,
+				7C903FDF1F7A5F3100A91793 /* SideAudio@2x.png */,
+				7C7BD4DE1F7DEFB30033F5CF /* audio_pause_h.png */,
+				7C7BD4DF1F7DEFB30033F5CF /* audio_pause_h@2x.png */,
+				7C7BD4E11F7DEFB40033F5CF /* audio_play_h.png */,
+				7C7BD4E01F7DEFB30033F5CF /* audio_play_h@2x.png */,
 				7C903FC11F7A512300A91793 /* Info.plist */,
 				7C903FC21F7A512300A91793 /* main.m */,
 				7C903FC41F7A512300A91793 /* VoiceButtonAnimation.entitlements */,
@@ -142,6 +164,8 @@
 			files = (
 				7C903FBB1F7A512300A91793 /* ViewController.m in Sources */,
 				7C903FC31F7A512300A91793 /* main.m in Sources */,
+				7C903FCC1F7A515500A91793 /* VoiceRecordButton.m in Sources */,
+				7C903FE31F7A895100A91793 /* WaveView.m in Sources */,
 				7C903FB81F7A512300A91793 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
