@@ -42,7 +42,7 @@
     [super drawRect:dirtyRect];
     
     if (!self.talking) {
-        
+        //现在没有在录音，即初始状态
         NSBezierPath *rectPath = [NSBezierPath bezierPathWithOvalInRect:dirtyRect];
         [[NSColor blueColor] setFill];
         [rectPath fill];
@@ -52,6 +52,7 @@
         return;
     }
     
+    //
     CGFloat midY = NSHeight(dirtyRect) / 2.f;
     CGFloat midX = NSWidth(dirtyRect) / 2.f;
     CGFloat leftX = midX - _pointArray.count / 2.f - _initialWidth / 2.f;
@@ -60,10 +61,10 @@
     // Drawing code here.
     CGContextRef ctx = [[NSGraphicsContext currentContext] graphicsPort];
     
-    //绘制初始线型
+    //绘制初始线型，模拟一般录音场景，刚开始可能没有说话，一条横线
     CGMutablePathRef linePath = CGPathCreateMutable();
     CGPathMoveToPoint(linePath, nil, leftX, midY);
-    CGPathAddLineToPoint(linePath, nil, leftX + _initialWidth, midY);
+    CGPathAddLineToPoint(linePath, nil, leftX + _initialWidth, midY);   //_initialWidth 横线的宽度，这里给了个固定值
     CGContextAddPath(ctx, linePath);
     
     //绘制上半部分波形
@@ -94,7 +95,7 @@
     //将路径添加到上下文中
     CGContextAddPath(ctx, fullPath);
     
-    //绘制矩形区域
+    //绘制矩形区域，即不断变长的蓝色背景
     CGMutablePathRef rectPath = CGPathCreateMutable();
     CGPathMoveToPoint(rectPath, nil, leftX, 0);
     CGPathAddRoundedRect(rectPath, nil, CGRectMake(leftX, 0, _pointArray.count + _initialWidth, NSHeight(dirtyRect)), NSHeight(dirtyRect) / 2.f, NSHeight(dirtyRect) / 2.f);
@@ -113,12 +114,12 @@
 
 #pragma mark - custom methods
 - (void)startAnimation{
-    self.enabled = NO;
+    self.enabled = NO;  //动画过程中禁用
     [self moveAnchorPointToCenter];   //将锚点移到中心 (为了达到围绕中心缩放的效果)
     
     //放大
     CAKeyframeAnimation *scaleToBigAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
-    scaleToBigAnimation.values = @[@(1.0), @(.7f), @(1.f), @(1.3f), @(1.7f)];
+    scaleToBigAnimation.values = @[@(1.0), @(.7f), @(1.f), @(1.3f), @(1.7f)];   //先从1.0缩小到0.7，再放大到1.7，这样就实现了泡泡效果
     scaleToBigAnimation.duration = 0.5;
     scaleToBigAnimation.beginTime = 0;
     
@@ -156,7 +157,7 @@
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(stopRecording) object:nil];
     
     self.enabled = YES;
-    self.frame = self.initialFrame;
+    self.frame = self.initialFrame; //录音结束后，按钮回到点击前的初始状态
     self.talking = NO;
     
     [self setNeedsDisplay:YES];
@@ -168,8 +169,10 @@
 
 #pragma mark - anchor configuration
 - (void)moveAnchorPointToCenter{
+    //由于图层锚点默认是在原点(0,0)，需要让图层围绕中心点缩放
     self.layer.anchorPoint = CGPointMake(0.5, 0.5);
     
+    //锚点改变后，为了让图层随着视图移动，将图层的位置也改到锚点的位置
     NSRect rect = self.frame;
     CGFloat centerX = rect.origin.x + rect.size.width / 2.f;
     CGFloat centerY = rect.origin.y + rect.size.height / 2.f;
@@ -185,6 +188,7 @@
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
     if (flag) {
         if ([self.delegate respondsToSelector:@selector(voiceRecordingWillBegin)]) {
+            //执行代理方法，准备数据
             [self.delegate voiceRecordingWillBegin];
         }
         [self resumeAnchorPoint];

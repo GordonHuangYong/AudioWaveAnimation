@@ -121,14 +121,16 @@
 #pragma mark - voice recording button delegate
 //录音即将开始
 - (void)voiceRecordingWillBegin{
+    //之前的动画只是图层动画，图层已经到了目标位置，但视图的 frame 还在原来的位置，因此要修改视图的位置和尺寸
     NSRect frame = self.voiceRecordBtn.frame;
     CGFloat centerX = frame.origin.x + frame.size.width / 2.f;
     CGFloat centerY = frame.origin.y + frame.size.height / 2.f - frame.size.height;
-    frame.size.width = 400;
+    frame.size.width = 400; //这里直接将尺寸设为最大了，这样后面绘制数据时就不用关心尺寸，只需要关心图层即可
     frame.origin.x = centerX - frame.size.width / 2.f;
     frame.origin.y = centerY - frame.size.height / 2.f;
     self.voiceRecordBtn.frame = frame;
     
+    //添加计时器，构造模拟数据
     [self addTimer];
 }
 
